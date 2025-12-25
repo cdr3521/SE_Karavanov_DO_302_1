@@ -1,0 +1,87 @@
+﻿<Window
+    Height="450"
+    Title="KickStudent"
+    Width="800"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    x:Class="lab2_11.Pages.KickStudent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:lab2_11.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Фон: світліший градієнт -->
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,2" StartPoint="0,0">
+            <GradientStop Color="#EAECEE" Offset="0.0" />
+            <GradientStop Color="#D5D8DC" Offset="1.0" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <!-- Додавання стилів із зовнішнього файлу -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок з поліпшеною стилізацією -->
+            <StackPanel
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,20">
+                <TextBlock
+                    FontSize="26"
+                    FontWeight="Bold"
+                    Foreground="#2C3E50"
+                    Text="Видалення студентів із кімнати" />
+            </StackPanel>
+
+            <!-- Список студентів з кнопками -->
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center">
+                <ItemsControl ItemsSource="{Binding Students}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BorderBrush="#34495E"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Margin="10"
+                                Padding="15"
+                                Background="#F7F9F9">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="18"
+                                        FontWeight="SemiBold"
+                                        Foreground="#2C3E50"
+                                        Text="{Binding Name}"
+                                        VerticalAlignment="Center" />
+                                    
+                                    <Button
+                                        Click="KickStudent_Click"
+                                        CommandParameter="{Binding}"
+                                        Content="Видалити"
+                                        Margin="15,0,0,0"
+                                        Width="120"
+                                        Height="35" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
