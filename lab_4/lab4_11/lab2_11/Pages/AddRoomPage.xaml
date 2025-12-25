@@ -1,0 +1,108 @@
+﻿<Window
+    Height="450"
+    Title="Add Room"
+    Width="800"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    x:Class="lab2_11.Pages.AddRoomPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:lab2_11.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Градієнтний фон з м'якими кольорами  -->
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+            <GradientStop Color="#F2F3F4" Offset="1.0" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <!--  Підключення зовнішніх стилів  -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--  Контент з автоскролом для довгих сторінок  -->
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Заголовок сторінки  -->
+            <StackPanel
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                Margin="10">
+                <TextBlock
+                    FontSize="28"
+                    FontWeight="Bold"
+                    Foreground="#2C3E50"
+                    Margin="0,0,0,20"
+                    Text="Add New Room"
+                    TextAlignment="Center" />
+
+                <!--  Поле для введення номера кімнати  -->
+                <TextBlock
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Foreground="#34495E"
+                    Margin="0,10,0,5"
+                    Text="Room Number:" />
+                <TextBox
+                    Background="#FBFCFC"
+                    BorderBrush="#D5DBDB"
+                    BorderThickness="1"
+                    Padding="8"
+                    Text="{Binding Room.Number, Mode=TwoWay}"
+                    Width="250" />
+
+                <!--  Поле для введення місткості кімнати  -->
+                <TextBlock
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Foreground="#34495E"
+                    Margin="0,15,0,5"
+                    Text="Capacity:" />
+                <TextBox
+                    Background="#FBFCFC"
+                    BorderBrush="#D5DBDB"
+                    BorderThickness="1"
+                    Padding="8"
+                    Text="{Binding Room.Capacity, Mode=TwoWay}"
+                    Width="250" />
+
+                <!--  Кнопка для додавання кімнати  -->
+                <Button
+                    BorderThickness="0"
+                    Click="AddRoomClick"
+                    Content="Add Room"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Height="45"
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,0"
+                    Width="200" />
+            </StackPanel>
+
+            <!--  Кнопка закриття  -->
+            <Button
+                BorderThickness="0"
+                Click="Close"
+                Content="Close"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Height="40"
+                HorizontalAlignment="Right"
+                Margin="0,10,10,10"
+                VerticalAlignment="Top"
+                Width="120" />
+        </Grid>
+    </ScrollViewer>
+</Window>
